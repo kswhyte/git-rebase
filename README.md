@@ -95,6 +95,11 @@ This is incredibly useful for updating commits without polluting the history wit
 #### Change previous two commits with an interactive rebase:
 `git rebase --interactive HEAD~`
 
+## Words from the Wise
+
+"Always use rebase as much as possible as long as you are not breaking the history for anyone else. This normally means that you shouldn't rebase commits you have already pushed or - if you do nevertheless - know exactly what the consequences are in your case and get consent of other people working on the branch if needed."
+[Julian Engelhardt - Dev.to](https://dev.to/oxygen0211)
+
 ## Sources | Credit
 
 [The Git Rebase Introduction I Wish I'd Had](https://dev.to/maxwell_dev/the-git-rebase-introduction-i-wish-id-had)
