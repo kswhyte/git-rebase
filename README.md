@@ -1,5 +1,7 @@
 # Git Rebase
 
+## Some Overhead
+
 ### Simply put...
 
 If you have differences that aren't on the origin branch, briefly put those aside, pull in the origin branch into your local branch, and then apply those changes that weren't on the origin branch. 
@@ -34,3 +36,13 @@ Sound the rebase sirens and call rebaseman. This is the kind of context that cal
 
 ---
 
+## Quick Tips
+
+#### Rebases 'feature' to 'master' and merges it in to master
+`git rebase master feature && git checkout master && git merge -`
+
+#### Always rebase instead of merge on pull.
+`git config --global pull.rebase true`
+
+#### Change previous two commits with an interactive rebase.
+`git rebase --interactive HEAD~`
