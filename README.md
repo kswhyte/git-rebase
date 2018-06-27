@@ -34,15 +34,13 @@ All these changes might be worrisome. What if someone merged a change that affec
 
 Sound the rebase sirens and call rebaseman. This is the kind of context that calls for a git rebase.
 
----
-
 ## Quick Tips
 
-#### Rebases 'feature' to 'master' and merges it in to master
+#### Rebases 'feature' to 'master' and merges it in to master:
 `git rebase master feature && git checkout master && git merge -`
 
-#### Always rebase instead of merge on pull.
+#### Always rebase instead of merge on pull:
 `git config --global pull.rebase true`
 
-#### Change previous two commits with an interactive rebase.
+#### Change previous two commits with an interactive rebase:
 `git rebase --interactive HEAD~`
