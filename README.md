@@ -37,16 +37,11 @@ Sound the rebase sirens and call rebaseman. This is situation calls for a git re
 ## How do I do it?
 
 Let's say the branch your rebasing on is `master`. Make sure the local version is up to date wit the remote: 
-`git checkout master`
-`git pull`
-`git checkout my-new-feature-branch`
+`git checkout master`;
+`git pull`;
+`git checkout my-new-feature-branch`;
 
-A straightforward rebase has a pretty simple command structure: 
-`git rebase <branch>` 
-...where `<branch>` is the one you're rebasing off of. 
-So here, you'll run 
-`git rebase master` 
-Assuming there's no conflicts, that's all the rebase needs!
+A straightforward rebase has a pretty simple command structure: `git rebase <branch>`, where `<branch>` is the one you're rebasing off of. So here, you'll run `git rebase master`. Assuming there's no conflicts, that's all the rebase needs!
 
 ## Quick Tips
 
