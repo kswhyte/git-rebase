@@ -6,7 +6,7 @@ If you have differences that aren't on the origin branch, briefly put those asid
 
 What this does is always apply your own changes on top of the (structure of) the origin branch, while leaving that stucture wholly intact.
 
-Credit: {{https://dev.to/alainvanhout}}
+Credit: https://dev.to/alainvanhout
 
 ### Why not?
 
@@ -16,4 +16,4 @@ It's likely this consultant was the victim of a force push and made a sweeping s
 
 Being mindful of which commands, like rebase, can rewrite history resolves this issue. Then you can use it appropriately. For example, I use rebase often. But I do so at the end - right before merging - so I limit the chance for it to affect other developers.
 
-Credit: {{https://dev.to/gonedark}}
+Credit: https://dev.to/gonedark
