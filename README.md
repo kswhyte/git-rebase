@@ -100,6 +100,9 @@ This is incredibly useful for updating commits without polluting the history wit
 "Always use rebase as much as possible as long as you are not breaking the history for anyone else. This normally means that you shouldn't rebase commits you have already pushed or - if you do nevertheless - know exactly what the consequences are in your case and get consent of other people working on the branch if needed."
 [Julian Engelhardt - Dev.to](https://dev.to/oxygen0211)
 
+"A simpler rule: just never use git push --force* except you're the one and only working on the branch and you're ready for consequences. Any usage of --force (both push and pull) can unexpectedly remove commits you don't want to be removed so just don't do it. Fortunately, it's relatively easy to restore them, read about git reflog."
+[rkfg](https://dev.to/rkfg)
+
 ## Sources | Credit
 
 [The Git Rebase Introduction I Wish I'd Had](https://dev.to/maxwell_dev/the-git-rebase-introduction-i-wish-id-had)
