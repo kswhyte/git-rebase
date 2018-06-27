@@ -32,7 +32,21 @@ All these changes might be worrisome. What if someone merged a change that affec
 
 **Is there a safe way to merge your changes without risking any conflicts, and missing out on all the other changes made?**
 
-Sound the rebase sirens and call rebaseman. This is the kind of context that calls for a git rebase.
+Sound the rebase sirens and call rebaseman. This is situation calls for a git rebase.
+
+## How do I do it?
+
+Let's say the branch your rebasing on is `master`. Make sure the local version is up to date wit the remote: 
+`git checkout master`
+`git pull`
+`git checkout my-new-feature-branch`
+
+A straightforward rebase has a pretty simple command structure: 
+`git rebase <branch>` 
+...where `<branch>` is the one you're rebasing off of. 
+So here, you'll run 
+`git rebase master` 
+Assuming there's no conflicts, that's all the rebase needs!
 
 ## Quick Tips
 
