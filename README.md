@@ -18,7 +18,7 @@ It's likely this consultant was the victim of a force push and made a sweeping s
 
 Being mindful of which commands, like rebase, can rewrite history resolves this issue. Then you can use it appropriately. For example, using rebase at the end - right before merging - to limit the chance for it to affect other developers.
 
-Credit: https://dev.to/gonedark
+Credit: [Jason McCreary - gonedark](https://dev.to/gonedark)
 
 ### What's the benefit? | Why would I want to rebase something?
 
@@ -43,6 +43,10 @@ Let's say the branch your rebasing on is `master`. Make sure the local version i
 
 A straightforward rebase has a pretty simple command structure: `git rebase <branch>`, where `<branch>` is the one you're rebasing off of. So here, you'll run `git rebase master`. Assuming there's no conflicts, that's all the rebase needs!
 
+## What does a rebase do?
+
+**The rebase itself technically removes your old commits and makes new commits identical to them, rewriting the repo's commit history.** That means pushing the rebase to the remote repo will need some extra juice. Using git push --force will do the trick fine, but a safer option is git push --force-with-lease. The latter will alert you of any upstream changes you hadn't noticed and prevent the push. This way you avoid overwriting anyone else's work, so it's the safer option.
+
 ## Quick Tips
 
 #### Rebases 'feature' to 'master' and merges it in to master:
@@ -53,3 +57,7 @@ A straightforward rebase has a pretty simple command structure: `git rebase <bra
 
 #### Change previous two commits with an interactive rebase:
 `git rebase --interactive HEAD~`
+
+## Sources | Credit
+
+[The Git Rebase Introduction I Wish I'd Had](https://dev.to/maxwell_dev/the-git-rebase-introduction-i-wish-id-had)
