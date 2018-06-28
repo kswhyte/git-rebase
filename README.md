@@ -2,13 +2,21 @@
 
 ## When do I use it, and what do I do?
 
-If you pull down the remote repository your team is working on, make a bunch of changes, and are looking to merge your code into the remote, but other members on your team have also made changes, you'll want to merge your changes into the remote repo as tactiful as possible. Usually developers will merge their code with a `git push origin <branchname>`. But this approach mixes multiple commits from multiple developers in an unorganized fashion. Using git rebase allows you to stack commit history from your changes "on top" of previous changes by other members of your team. This allows for more organization.
+If you pull down the remote repository your team is working on, make a bunch of changes, and are looking to merge your code into the remote, but other members on your team have also made changes, you'll want to merge your changes into the remote repo as tactiful as possible. 
+
+Usually developers will merge their code with a `git push origin <branchname>`. But this approach mixes multiple commits from multiple developers in an unorganized fashion. Using git rebase allows you to stack commit history from your changes "on top" of previous changes by other members of your team. This allows for more organization.
 
 If you have differences that aren't on the origin branch, briefly put those aside, pull in the origin branch into your local branch, and then apply those changes that weren't on the origin branch. 
 
 What this does is always apply your own changes on top of the (structure of) the origin branch, while leaving that stucture wholly intact.
 
 Ref/Credit: [Alain Van Hout - Dev.to](https://dev.to/alainvanhout)
+
+## The skinny...
+
+Rebase will find the common ancestor and split your branch from there. It will point the head to the tip of the other branch  and will replay all your commits on top of that.
+
+Thus, changes that are existing before you add yours in will stay where they were first made.
 
 ## What's the hesitation?
 
@@ -106,7 +114,9 @@ This is incredibly useful for updating commits without polluting the history wit
 ## Sources | Credit
 
 [The Git Rebase Introduction I Wish I'd Had](https://dev.to/maxwell_dev/the-git-rebase-introduction-i-wish-id-had)
+[Explain Git Rebase just like I'm five](https://dev.to/theodesp/explain-git-rebase-just-like-im-five-7l2)
 
 ## Dive Further
 
 [Git Interactive Rebase, Squash, Amend and Other Ways of Rewriting History](https://robots.thoughtbot.com/git-interactive-rebase-squash-amend-rewriting-history)
+[Learn Git Branching through Graphic Tools](https://learngitbranching.js.org/)
