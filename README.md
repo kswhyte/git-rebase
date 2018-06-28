@@ -1,8 +1,8 @@
 # Git Rebase - The Essentials Consolidated
 
-## Some Overhead
+## When do I use it, and what do I do?
 
-### Simply put...
+If you pull down the remote repository your team is working on, make a bunch of changes, and are looking to merge your code into the remote, but other members on your team have also made changes, you'll want to merge your changes into the remote repo as tactiful as possible. Usually developers will merge their code with a `git push origin <branchname>`. But this approach mixes multiple commits from multiple developers in an unorganized fashion. Using git rebase allows you to stack commit history from your changes "on top" of previous changes by other members of your team. This allows for more organization.
 
 If you have differences that aren't on the origin branch, briefly put those aside, pull in the origin branch into your local branch, and then apply those changes that weren't on the origin branch. 
 
@@ -10,7 +10,7 @@ What this does is always apply your own changes on top of the (structure of) the
 
 Ref/Credit: [Alain Van Hout - Dev.to](https://dev.to/alainvanhout)
 
-### What's the hesitation?
+## What's the hesitation?
 
 The reason people shy away from rebase is because **it rewrites history - meaning it changes the commit SHAs. So if you're sharing your work with others, that can be a problem.**
 
@@ -20,7 +20,7 @@ Being mindful of which commands, like rebase, can rewrite history resolves this 
 
 Ref/Credit: [Jason McCreary - Dev.to](https://dev.to/gonedark)
 
-### What's the benefit? | Why would I want to rebase something?
+## What's the benefit? | Why would I want to rebase something?
 
 You update the beautiful front-end UI of your account login system, and unsurprisingly, other people were working on the site while you were making these changes.
 
