@@ -114,9 +114,11 @@ This is incredibly useful for updating commits without polluting the history wit
 ## Sources | Credit
 
 [The Git Rebase Introduction I Wish I'd Had](https://dev.to/maxwell_dev/the-git-rebase-introduction-i-wish-id-had)
+
 [Explain Git Rebase just like I'm five](https://dev.to/theodesp/explain-git-rebase-just-like-im-five-7l2)
 
 ## Dive Further
 
 [Git Interactive Rebase, Squash, Amend and Other Ways of Rewriting History](https://robots.thoughtbot.com/git-interactive-rebase-squash-amend-rewriting-history)
+
 [Learn Git Branching through Graphic Tools](https://learngitbranching.js.org/)
