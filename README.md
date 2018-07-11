@@ -1,5 +1,23 @@
 # Git Rebase - The Essentials Consolidated
 
+## A QuickLook...
+
+You start working on a feature branch, and master in the upstream project moves ahead:
+
+```
+      A---B---C feature
+     /
+D---E---F---G upstream/master
+```
+
+You rebase on top of master:
+
+```
+              A'--B'--C' feature
+             /
+D---E---F---G upstream/master
+```
+
 ## When do I use it, and what do I do?
 
 If you pull down the remote repository your team is working on, make a bunch of changes, and are looking to merge your code into the remote, but other members on your team have also made changes, you'll want to merge your changes into the remote repo as tactiful as possible. 
@@ -94,14 +112,21 @@ This is incredibly useful for updating commits without polluting the history wit
 
 ## Quick Tips
 
+#### Change the last commit message you made:
+`git commit --amend`
+
 #### Rebases 'feature' to 'master' and merges it in to master:
 `git rebase master feature && git checkout master && git merge -`
 
 #### Always rebase instead of merge on pull:
 `git config --global pull.rebase true`
 
-#### Change previous two commits with an interactive rebase:
+#### Change/reword previous two, or however many, commits with an interactive rebase:
 `git rebase --interactive HEAD~`
+`git rebase -i HEAD~4` (Reword any of the last 4 commits)
+
+#### You prefer not to have previous changes in your repository:
+`git revert`
 
 ## Words from the Wise
 
@@ -122,3 +147,5 @@ This is incredibly useful for updating commits without polluting the history wit
 [Git Interactive Rebase, Squash, Amend and Other Ways of Rewriting History](https://robots.thoughtbot.com/git-interactive-rebase-squash-amend-rewriting-history)
 
 [Learn Git Branching through Graphic Tools](https://learngitbranching.js.org/)
+
+[Git Interactive Rebase, Squash, Amend and Other Ways of Rewriting History](https://robots.thoughtbot.com/git-interactive-rebase-squash-amend-rewriting-history)
