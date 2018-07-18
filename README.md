@@ -89,12 +89,10 @@ Once everything is fixed, `git add` and `git commit` the changes like you would 
 
 **Two lesser-used options** could also be handy if you need to...
 
---
 1. Go back to before you started the rebase. It's useful for unexpected conflicts that you can't rush a decision for:
 `git rebase --abort` 
 2. Skip over the commit causing the conflict altogether. Unless you know it's an unneeded commit, you probably won't want to use it much:
 `git rebase --skip`
---
 
 ## How can I get more control? | Great power brings great responsibility...
 
@@ -125,14 +123,12 @@ Autosquashing is merging two commits together and renaming the new one. If you h
 
 In this example, we'll assume we have 3 commits or so, but the 2nd one doesn't have an important change noted. To keep our history clean, we'll follow a flow similar to these 6 steps below:
 
---
 1. After making changes, stage your commits.
 2. Get the ID of the commit you want to add notes to. Use `git log --oneline` to get a consolidated list of commits for a quick overview, but you'll want to use `git log` to get detailed info with the ID, which usually shows up something like `commit 0164cf4771195f6f8924eaaf55041e29ef3d1923`. There is also a nifty command to pull the current commit ID, `git rev-parse HEAD`.
 3. Use `git commit --fixup <commitID>` to commit the changes as normal, but the name will be the same as our 2nd commit (the one we want to edit) with "fixup!" prepended.
 4. Next run `git rebase -i --autosquash <master>`. Remember to include the right parameters!
 5. We'll see the normal page for an interactive rebase, with all our commits listed in the VIM interface. But our fixup commit will be right below our second commit, set up to be merged into it automatically!
 6. Run the rebase and your commits will combine automatically! If there's a conflict it'll ask you to resolve it like normal, and the rebase will continue.
---
 
 **This is incredibly useful for updating commits without polluting the history with lots of "small fix" changes that make it tedious and confusing**. 
 
