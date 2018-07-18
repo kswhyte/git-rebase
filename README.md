@@ -1,6 +1,6 @@
 # Git Rebase - The Essentials Consolidated
 
-## A visual take...
+## What's it look like? | A visual take...
 
 You start working on a feature branch, and master in the upstream project moves ahead:
 
@@ -18,25 +18,25 @@ You rebase on top of master:
 D---E---F---G upstream/master
 ```
 
-## When do I use it, and what do I do?
+## When do I use it, and what do I do? | The details...
 
-If you pull down the remote repository your team is working on, make a bunch of changes, and are looking to merge your code into the remote, but other members on your team have also made changes, you'll want to merge your changes into the remote repo as tactiful as possible. 
+If you pull down the remote repository your team is working on, make a bunch of changes, and are **looking to merge your code into the remote, but other members on your team have also made changes**, you'll want to merge your changes into the remote repo as tactiful as possible. 
 
-Usually developers will merge their code with a `git push origin <branchname>`. But this approach mixes multiple commits from multiple developers in an unorganized fashion. Using git rebase allows you to stack commit history from your changes "on top" of previous changes by other members of your team. This allows for more organization.
+Usually developers will merge their code with a `git push origin <branchname>`, but this approach mixes multiple commits from multiple developers in an unorganized fashion. **Using git rebase allows you to stack commit history from your changes "on top" of previous changes by other members of your team**. This allows for more organization.
 
 If you have differences that aren't on the origin branch, briefly put those aside, pull in the origin branch into your local branch, and then apply those changes that weren't on the origin branch. 
 
-What this does is always apply your own changes on top of the (structure of) the origin branch, while leaving that stucture wholly intact.
+**What this does is always apply your own changes on top of the (structure of) the origin branch, while leaving that stucture wholly intact**.
 
 Ref/Credit: [Alain Van Hout - Dev.to](https://dev.to/alainvanhout)
 
-## The skinny...
+## What's the general idea? | The skinny...
 
 Rebase will find the common ancestor and split your branch from there. It will point the head to the tip of the other branch  and will replay all your commits on top of that.
 
-Thus, changes that are existing before you add yours in will stay where they were first made.
+Thus, **changes that are existing before you add yours in will stay where they were first made**.
 
-## What's the hesitation?
+## What's the hesitation? | Things that can go wrong...
 
 The reason people shy away from rebase is because **it rewrites history - meaning it changes the commit SHAs. So if you're sharing your work with others, that can be a problem.**
 
@@ -46,7 +46,7 @@ Being mindful of which commands, like rebase, can rewrite history resolves this 
 
 Ref/Credit: [Jason McCreary - Dev.to](https://dev.to/gonedark)
 
-## What's the benefit? | Why would I want to rebase something?
+## What's the benefit? | A living example...
 
 You update the beautiful front-end UI of your account login system, and unsurprisingly, other people were working on the site while you were making these changes.
 
@@ -56,24 +56,28 @@ You update the beautiful front-end UI of your account login system, and unsurpri
 
 All these changes might be worrisome. What if someone merged a change that affects or overlaps with the ones you made? It could lead to bugs in your beautiful healthgrades website! If you look at the different changes made, one does cause some issues! 
 
-**Is there a safe way to merge your changes without risking any conflicts, and missing out on all the other changes made?**
+**There is a safe way to merge your changes without risking any conflicts, and missing out on all the other changes made!**
 
-Sound the rebase sirens and call rebaseman. This is situation calls for a git rebase.
+Sound the rebase sirens and call rebaseman. This is situation calls for a git rebase, and yes, he can solve this issue.
 
-## How do I do it?
+## How do I do it? | A brief breakdown...
 
 Let's say the branch your rebasing on is `master`. Make sure the local version is up to date wit the remote: 
 `git checkout master`;
 `git pull`;
 `git checkout my-new-feature-branch`;
 
-A straightforward rebase has a pretty simple command structure: `git rebase <branch>`, where `<branch>` is the one you're rebasing off of. So here, you'll run `git rebase master`. Assuming there's no conflicts, that's all the rebase needs!
+**A straightforward rebase has a pretty simple command structure: `git rebase <branch>`, where `<branch>` is the one you're rebasing off of.** 
 
-## What does a rebase do?
+So next, you'll run `git rebase master`. 
+
+**Assuming there's no conflicts, that's all the rebase needs!**
+
+## What does a rebase do? | Behind the scenes...
 
 **The rebase itself technically removes your old commits and makes new commits identical to them, rewriting the repo's commit history.** That means pushing the rebase to the remote repo requires another command. Using `git push --force` will do the trick fine, but a safer option is `git push --force-with-lease`. **The latter will alert you of any upstream changes you hadn't noticed and prevent the push. This way you avoid overwriting anyone else's work, so it's the safer option.**
 
-## Of course, sometimes there will be conflicts...
+## What should you know about? | Of course, sometimes there will be conflicts...
 
 Say your change to the app's account UI is at odds - there is a conflict - with a change another dev made to the same copy. The updated markups from both sets of change are in the same lines - **this means the rebase can't happen automatically.** Git won't know which parts of the changes to keep and which to remove. It must be resolved! 
 
@@ -81,23 +85,38 @@ Thankfully, git makes this very easy. **During the rebase, git adds each commit 
 
 Once everything is fixed, `git add` and `git commit` the changes like you would a normal merge conflict. Then run `git rebase --continue` so git can rebase the rest of your commits. It'll pause for any more conflicts, and once they're set you just need to `git push --force-with-lease`.
 
-Two lesser-used options could also be handy. 
+**Two lesser-used options** could also be handy if you need to...
 1. Go back to before you started the rebase. It's useful for unexpected conflicts that you can't rush a decision for:
 `git rebase --abort` 
 2. Skip over the commit causing the conflict altogether. Unless you know it's an unneeded commit, you probably won't want to use it much:
 `git rebase --skip`
 
-## Great power brings great responsibility - more control?
+## How can I get more control? | Great power brings great responsibility...
 
 With what you know so far, rebasing will lend great power. To have even greater version control, add `--interactive`, or `-i`, flag in your command. For instance, `git rebase -i master` shows a list of all the commits you're about to rebase. You can choose which ones to stop and edit, which ones to skip, and even merge some together!
 
-## What the heck is autosquashing?
+Here are the list of commands available with this flag:
+
+```
+# Commands:
+# p, pick = use commit
+# r, reword = use commit, but edit the commit message
+# e, edit = use commit, but stop for amending
+# s, squash = use commit, but meld into previous commit
+# f, fixup = like "squash", but discard this commit's log message
+# x, exec = run command (the rest of the line) using shell
+# d, drop = remove commit
+```
+
+You'll want to chose a prefix, i.e. `f`, or a command, i.e. `fixup` and replace the word `pick` before each commit with that prefix or command. This will apply those specific changes related to the command to the commit you choose.
+
+## What the heck is autosquashing? | Smashing pumpkins...
 
 Autosquashing is merging two commits together and renaming the new one. If you have lots of small, similar commits that could be combined, or need to amend an older commit, this is a great trick. Rebasing makes it easy to do this with the incredible flags, `--fixup` and `--autosquash`. 
 
-The best commit histories tell an understandable story. Autosquashing keeps it from getting overwhelmed by obnoxious footnotes. Might as well make use of it!
+**The best commit histories tell an understandable story. Autosquashing keeps it from getting overwhelmed by obnoxious footnotes.** Might as well make use of it!
 
-## How do you autosquash?
+## How do you autosquash? | Explaining magic...
 
 In this example, we'll assume we have 3 commits or so, but the 2nd one doesn't have an important change noted. To keep our history clean, we'll follow a flow similar to these 6 steps below:
 
@@ -108,14 +127,14 @@ In this example, we'll assume we have 3 commits or so, but the 2nd one doesn't h
 5. We'll see the normal page for an interactive rebase, with all our commits listed in the VIM interface. But our fixup commit will be right below our second commit, set up to be merged into it automatically!
 6. Run the rebase and your commits will combine automatically! If there's a conflict it'll ask you to resolve it like normal, and the rebase will continue.
 
-This is incredibly useful for updating commits without polluting the history with lots of "small fix" changes that make it tedious and confusing. 
+**This is incredibly useful for updating commits without polluting the history with lots of "small fix" changes that make it tedious and confusing**. 
 
-## Quick Tips
+## What are some other ways to rebase & change history? | Quick tips...
 
 #### Change the last commit message you made:
 `git commit --amend`
 
-#### Rebases 'feature' to 'master' and merges it in to master:
+#### Rebase a 'feature' to 'master' and merge it in to master:
 `git rebase master feature && git checkout master && git merge -`
 
 #### Always rebase instead of merge on pull:
@@ -128,7 +147,7 @@ This is incredibly useful for updating commits without polluting the history wit
 #### You prefer not to have previous changes in your repository:
 `git revert`
 
-## Words from the Wise
+## What do people say? | Words from the wise...
 
 "Always use rebase as much as possible as long as you are not breaking the history for anyone else. This normally means that you shouldn't rebase commits you have already pushed or - if you do nevertheless - know exactly what the consequences are in your case and get consent of other people working on the branch if needed."
 [Julian Engelhardt - Dev.to](https://dev.to/oxygen0211)
@@ -136,13 +155,13 @@ This is incredibly useful for updating commits without polluting the history wit
 "A simpler rule: just never use git push --force* except you're the one and only working on the branch and you're ready for consequences. Any usage of --force (both push and pull) can unexpectedly remove commits you don't want to be removed so just don't do it. Fortunately, it's relatively easy to restore them, read about git reflog."
 [rkfg](https://dev.to/rkfg)
 
-## Sources | Credit
+## Sources? | Gotta give credit...
 
 [The Git Rebase Introduction I Wish I'd Had](https://dev.to/maxwell_dev/the-git-rebase-introduction-i-wish-id-had)
 
 [Explain Git Rebase just like I'm five](https://dev.to/theodesp/explain-git-rebase-just-like-im-five-7l2)
 
-## Dive Further
+## What can you dive further? | It's a big ocean out there...
 
 [Git Interactive Rebase, Squash, Amend and Other Ways of Rewriting History](https://robots.thoughtbot.com/git-interactive-rebase-squash-amend-rewriting-history)
 
