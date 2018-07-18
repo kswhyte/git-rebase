@@ -1,6 +1,6 @@
 # Git Rebase - The Essentials Consolidated
 
-## A QuickLook...
+## A visual take...
 
 You start working on a feature branch, and master in the upstream project moves ahead:
 
