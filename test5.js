@@ -1,1 +1,3 @@
-console.log('erin wuz here')
+const skolVikes = () => {
+  console.log('GO BIG BLUE!!!');
+}
