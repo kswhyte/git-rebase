@@ -1,3 +1,3 @@
 const skolVikes = () => {
-  console.log('SKOLLLLLLLL VIKES!')
+  console.log('GO BIG BLUE!!!!')
 }
